@@ -170,14 +170,13 @@ if (welcomeOverlay) {
     });
 }
 
-// =======================================
-// ✨ ANIMACIÓN DE LA PESTAÑA DEL NAVEGADOR
-// =======================================
+// ANIMACIÓN DE LA PESTAÑA DEL NAVEGADOR
 (function() {
     const titlePhrases = [
         "skibidicumpleaños 🎉",
         "¡Te espero! 💕",
-        "¡Entra a la fiesta! 🎂"
+        "¡Entra a la fiesta! 🎂",
+        "SixSevenRizzcumpleaños ✨"
     ];
 
     let phraseIndex = 0;
