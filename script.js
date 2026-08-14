@@ -170,47 +170,49 @@ if (welcomeOverlay) {
     });
 }
 
-// ✨ EFECTO MÁQUINA DE ESCRIBIR EN EL TÍTULO
+// =======================================
+// ✨ ANIMACIÓN DE LA PESTAÑA DEL NAVEGADOR
+// =======================================
+(function() {
+    const titlePhrases = [
+        "skibidicumpleaños 🎉",
+        "¡Te espero! 💕",
+        "¡Entra a la fiesta! 🎂"
+    ];
 
-const titlePhrases = [
-    "skibidicumpleaños 🎉",
-    "¡Te espero! 💕",
-    "¡Entra a la fiesta! 🎂",
-    "skibidicumpleaños ✨"
-];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+    function animate() {
+        const currentPhrase = titlePhrases[phraseIndex];
 
-function animateTabTitle() {
-    const currentPhrase = titlePhrases[phraseIndex];
+        if (isDeleting) {
+            document.title = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            document.title = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+        }
 
-    if (isDeleting) {
-        document.title = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
+        let speed = isDeleting ? 100 : 180;
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            speed = 2000; // Tiempo que se queda el texto completo
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % titlePhrases.length;
+            speed = 500;
+        }
+
+        setTimeout(animate, speed);
+    }
+
+    // Iniciar inmediatamente
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        animate();
     } else {
-        document.title = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
+        document.addEventListener('DOMContentLoaded', animate);
     }
-
-
-    let typingSpeed = isDeleting ? 100 : 180;
-
-
-    if (!isDeleting && charIndex === currentPhrase.length) {
-        typingSpeed = 2000; // Pausa con el texto completo
-        isDeleting = true;
-    } 
-
-    else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % titlePhrases.length; // Pasa a la siguiente frase
-        typingSpeed = 500; // Pausa antes de empezar la nueva
-    }
-
-    setTimeout(animateTabTitle, typingSpeed);
-}
-
-
-animateTabTitle();
+})();
