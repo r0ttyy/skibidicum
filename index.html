@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Gustos - Guía para mi Cumpleaños skibidi 🎂</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+
+    <!--Overlay de bienvenida -->
+    <div id="welcome-overlay" class="welcome-overlay">
+        <div class="welcome-card">
+            <div class="welcome-icon">🎂✨</div>
+            <h1>¡Hola! 💕</h1>
+            <p>Si eres skibidi toca abajo</p>
+            <button class="welcome-btn">Entrar a la fiesta 🎉</button>
+        </div>
+    </div>
+
+    <!-- Botón de música y control de volumen -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://files.catbox.moe/i835r6.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-player">
+        <button id="music-btn" class="music-btn playing" onclick="toggleMusic()" title="Play / Pausa">
+            <img src="hamsterweon.png" id="music-img" alt="Música">
+        </button>
+
+        <div class="volume-container">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.3"
+                oninput="changeVolume(this.value)">
+        </div>
+    </div>
+
+    <div class="carousel-wrapper">
+        <!-- Flechas laterales de navegación -->
+        <button class="nav-btn prev" onclick="moveSlide(-1)">💗</button>
+        <button class="nav-btn next" onclick="moveSlide(1)">💗</button>
+
+        <div class="carousel" id="carousel">
+
+            <!-- Diapositiva 1: INVITACION -->
+            <div class="slide">
+                <h1>🎉 ¡Estás invitado a mi Cumpleaños! 🎉</h1>
+                <p class="subtitle">✨ WENA WENA WENA ✨</p>
+                <p class="subtitle">Aquí está el cronograma y algunos de mis gustos 🎀</p>
+                <div class="image-gallery" style="margin-top: 10px;">
+                    <img src="love.jpg" alt="Invitación"
+                        onerror="this.src='https://via.placeholder.com/250?text=Invitación+💖'">
+                </div>
+            </div>
+
+            <!-- Diapositiva 2: CRONOGRAMA -->
+            <div class="slide">
+                <h2>📅 Cronograma (Parte 1)</h2>
+                <p class="subtitle">Este es un skibidi resumen del cumple 🎈</p>
+                <ul>
+                    <li>🍕 <strong>17:00 PM:</strong> CHUCK E. CHEESE</li>
+                    <li>🚗 <strong>18:40 PM:</strong> Nos vamos</li>
+                </ul>
+
+                <div class="image-gallery">
+                    <img src="logo.png" alt="Desayuno"
+                        onerror="this.src='https://via.placeholder.com/250?text=Chuck+E+Cheese+🎮'">
+                </div>
+            </div>
+
+            <!-- Diapositiva 3: CRONOGRAMA 2 -->
+            <div class="slide">
+                <h2>🎤 Cronograma (Parte 2)</h2>
+                <p class="subtitle">Nos vamos al Karaoke 🎶 (yo pago 1 hr y entre todos la otra)</p>
+                <ul>
+                    <li>🎤 <strong>19:00 PM:</strong> KARAOKE</li>
+                    <li>🏡 <strong>21:00 PM:</strong> Nos vamos a mi Departamento</li>
+                </ul>
+
+                <div class="image-gallery">
+                    <img src="karaoke.png" alt="KARAOKE"
+                        onerror="this.src='https://via.placeholder.com/250?text=Karaoke+Time+🎤'">
+                </div>
+            </div>
+
+            <!-- Diapositiva 4: CRONOGRAMA 3 -->
+            <div class="slide">
+                <h2>🏠 Cronograma (Parte 3)</h2>
+                <p class="subtitle">¡Chill en el depa! 🍕✨</p>
+                <ul>
+                    <li>✨ <strong>21:00 PM en adelante:</strong> Tarde/noche en mi Departamento</li>
+                </ul>
+
+                <div class="image-gallery">
+                    <img src="isla.jpg" alt="isla"
+                        onerror="this.src='https://via.placeholder.com/250?text=Depa+Party+🥳'">
+                </div>
+            </div>
+
+            <!-- Diapositiva 1: Inicio -->
+            <div class="slide">
+                <h1>✨ Guía de Regalos y Gustos ✨</h1>
+                <p class="subtitle">Ideas bonitas por si no sabes qué regalarme 🎁</p>
+                <p style="font-size: 0.85em; color: #888; margin-top: 5px;">👉 Desliza a los lados o usa las flechitas
+                </p>
+
+                <div class="image-gallery" style="margin-top: 15px;">
+                    <img src="sixseven.jpg" alt="Bienvenida"
+                        onerror="this.src='https://via.placeholder.com/250?text=🎂+Cumple+🎂'">
+                </div>
+
+                <div class="footer">
+                    Cualquier cosita se agradece mucho owo 💕
+                </div>
+            </div>
+
+            <!-- Diapositiva 2: Colores -->
+            <div class="slide">
+                <h2>🎨 Colores Favoritos</h2>
+                <p class="subtitle">Mis tonos preferidos 🌸</p>
+                <div class="color-palette">
+                    <div class="color-box" style="background-color: #ffabc8;" title="Rosa pastel"></div>
+                    <div class="color-box" style="background-color: #121040;" title="Azul suave"></div>
+                    <div class="color-box" style="background-color: #7954ff;" title="Malva"></div>
+                </div>
+            </div>
+
+            <!-- Diapositiva 3: Maquillaje -->
+            <div class="slide">
+                <h2>💄 Maquillaje & Care</h2>
+                <ul>
+                    <li>💋 <strong>Tonos de labiales:</strong> Cereza, rosados suaves, especialmente tintas.</li>
+                    <li>✨ <strong>Productos:</strong> Glosses con brillo, rubores en barra, mascarillas hidratantes,
+                        skincare y paletas con glitters.</li>
+                    <li>🌸 <strong>Aromas:</strong> Dulces, florales suaves, coco.</li>
+                </ul>
+
+                <div class="image-gallery">
+                    <img src="makeup.jpg" alt="Maquillaje 1"
+                        onerror="this.src='https://via.placeholder.com/250?text=Gloss+%26+Tintas+💄'">
+                    <img src="tung.jpg" alt="Maquillaje 2"
+                        onerror="this.src='https://via.placeholder.com/250?text=Skincare+✨'">
+                </div>
+            </div>
+
+            <!-- Diapositiva 4: Personajes e Intereses -->
+            <div class="slide">
+                <h2>⭐ Personajes e Intereses ⭐</h2>
+                <ul>
+                    <li>⚡ <strong>Película:</strong> Harry Potter</li>
+                    <li>🏐 <strong>Anime:</strong> HxH (Killua) & Haikyuu (Kenma)</li>
+                    <li>🎶 <strong>K-POP:</strong> BTS, NewJeans, StayC</li>
+                </ul>
+
+                <div class="image-gallery">
+                    <img src="personajes.jpg" alt="Killua/Kenma"
+                        onerror="this.src='https://via.placeholder.com/250?text=Killua+%26+Kenma+💖'">
+                </div>
+            </div>
+
+            <!-- Diapositiva 5: Otras cosillas -->
+            <div class="slide">
+                <h2>🎁 Otras Cosillas</h2>
+                <ul>
+                    <li>👕 <strong>Talla de ropa:</strong> Que me quede enorme (XL o 2XL).</li>
+                    <li>💎 <strong>Accesorios:</strong> Aros pegaditos, collares plateados o con colorcitos.</li>
+                    <li>⚠️ <strong>NO PUEDO COMER:</strong> Cosas duras (gomitas, chocolate, maní, chicle, etc.)</li>
+                </ul>
+
+                <div class="image-gallery">
+                    <img src="bien.jpg" alt="Accesorios"
+                        onerror="this.src='https://via.placeholder.com/250?text=Accesorios+🎀'">
+                </div>
+            </div>
+
+            <!-- Diapositiva 6: Playlist Colaborativa -->
+            <div class="slide">
+                <h2>🎵 Playlist del Cumpleaños</h2>
+                <p class="subtitle">¡Pon aquí tu skibidi música! 🎧</p>
+
+                <iframe style="border-radius:18px; margin-top: 10px;"
+                    src="https://open.spotify.com/embed/playlist/1MFXuhc0mbUMDpxAIRsYgx" width="100%" height="152"
+                    frameBorder="0" allowfullscreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+                </iframe>
+
+                <a class="spotify-btn"
+                    href="https://open.spotify.com/playlist/1MFXuhc0mbUMDpxAIRsYgx?si=f1ec7e8c5f56443c&pt=745730bbe14e97233a9c5bb62f6415ba"
+                    target="_blank">
+                    ➕ Agregar tus canciones en Spotify
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- import del script el cual maneja todo lo que esta mierda hace -->
+    <script src="script.js" defer></script>
+</body>
+
+</html>
