@@ -169,3 +169,48 @@ if (welcomeOverlay) {
         }
     });
 }
+
+// ✨ EFECTO MÁQUINA DE ESCRIBIR EN EL TÍTULO
+
+const titlePhrases = [
+    "skibidicumpleaños 🎉",
+    "¡Te espero! 💕",
+    "¡Entra a la fiesta! 🎂",
+    "skibidicumpleaños ✨"
+];
+
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function animateTabTitle() {
+    const currentPhrase = titlePhrases[phraseIndex];
+
+    if (isDeleting) {
+        document.title = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        document.title = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+
+    let typingSpeed = isDeleting ? 100 : 180;
+
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        typingSpeed = 2000; // Pausa con el texto completo
+        isDeleting = true;
+    } 
+
+    else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % titlePhrases.length; // Pasa a la siguiente frase
+        typingSpeed = 500; // Pausa antes de empezar la nueva
+    }
+
+    setTimeout(animateTabTitle, typingSpeed);
+}
+
+
+animateTabTitle();
